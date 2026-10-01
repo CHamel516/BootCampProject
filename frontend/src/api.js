@@ -10,7 +10,19 @@ async function request(method, path, body) {
 
   const res = await fetch(path, opts);
   const text = await res.text();
-  const data = text ? JSON.parse(text) : null;
+  let data = null;
+  if (text) {
+    try {
+      data = JSON.parse(text);
+    } catch {
+      // Non-JSON reply (e.g. a hosting 404 page) — the API isn't reachable.
+      const err = new Error(
+        `Can't reach the Kickstart API (HTTP ${res.status}). Is the backend running/deployed?`
+      );
+      err.status = res.status;
+      throw err;
+    }
+  }
 
   if (res.status === 401 && !path.startsWith("/api/auth/")) {
     auth.clear();
