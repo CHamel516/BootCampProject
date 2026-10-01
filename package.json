@@ -4,6 +4,7 @@
   "description": "Simple Todo API — Node.js + Express + MongoDB",
   "main": "backend/server.js",
   "type": "module",
+  "workspaces": ["frontend"],
   "scripts": {
     "start": "node backend/server.js",
     "dev": "concurrently -n backend,frontend -c cyan,magenta \"npm run dev:backend\" \"npm run dev:frontend\"",
