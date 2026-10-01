@@ -1,6 +1,6 @@
 import "dotenv/config";
 import mongoose from "mongoose";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { connectDatabase } from "../db/database.js";
 import User from "../models/User.js";
 import Commitment from "../models/Commitment.js";
