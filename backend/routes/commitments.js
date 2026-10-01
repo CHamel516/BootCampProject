@@ -11,6 +11,25 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.put("/series/:seriesId", async (req, res, next) => {
+  try {
+    res
+      .status(200)
+      .json(await service.updateSeries(req.userId, req.params.seriesId, req.body));
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete("/series/:seriesId", async (req, res, next) => {
+  try {
+    const result = await service.deleteSeries(req.userId, req.params.seriesId);
+    res.status(200).json({ message: "Series deleted", ...result });
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get("/:id", async (req, res, next) => {
   try {
     res.status(200).json(await service.getCommitment(req.userId, req.params.id));

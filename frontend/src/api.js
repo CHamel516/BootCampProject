@@ -46,6 +46,10 @@ export const api = {
   createCommitment: (body) => request("POST", "/api/commitments", body),
   updateCommitment: (id, body) => request("PUT", `/api/commitments/${id}`, body),
   deleteCommitment: (id) => request("DELETE", `/api/commitments/${id}`),
+  updateCommitmentSeries: (seriesId, body) =>
+    request("PUT", `/api/commitments/series/${seriesId}`, body),
+  deleteCommitmentSeries: (seriesId) =>
+    request("DELETE", `/api/commitments/series/${seriesId}`),
 
   listGoals: () => request("GET", "/api/goals"),
   createGoal: (body) => request("POST", "/api/goals", body),

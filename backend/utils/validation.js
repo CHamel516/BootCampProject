@@ -14,6 +14,22 @@ export function assertDayOfWeek(day, field = "dayOfWeek") {
   }
 }
 
+export function assertDaysOfWeek(days, field = "daysOfWeek") {
+  if (!Array.isArray(days) || days.length === 0) {
+    throw new HttpError(400, `${field} must be a non-empty array`);
+  }
+  const seen = new Set();
+  for (const d of days) {
+    if (!Number.isInteger(d) || d < 0 || d > 6) {
+      throw new HttpError(400, `${field} values must be integers 0-6`);
+    }
+    if (seen.has(d)) {
+      throw new HttpError(400, `${field} must not contain duplicates`);
+    }
+    seen.add(d);
+  }
+}
+
 export function assertTime(value, field) {
   if (!isValidTime(value)) {
     throw new HttpError(400, `${field} must be in HH:MM format`);

@@ -80,6 +80,14 @@ export default function App() {
     await api.deleteCommitment(id);
     await loadAll();
   }
+  async function handleUpdateCommitmentSeries(seriesId, body) {
+    await api.updateCommitmentSeries(seriesId, body);
+    await loadAll();
+  }
+  async function handleDeleteCommitmentSeries(seriesId) {
+    await api.deleteCommitmentSeries(seriesId);
+    await loadAll();
+  }
 
   async function handleCreateAndPlan(goalBody) {
     const goal = await api.createGoal(goalBody);
@@ -177,6 +185,8 @@ export default function App() {
             onCreate={handleCreateCommitment}
             onUpdate={handleUpdateCommitment}
             onDelete={handleDeleteCommitment}
+            onUpdateSeries={handleUpdateCommitmentSeries}
+            onDeleteSeries={handleDeleteCommitmentSeries}
           />
         </div>
       </main>

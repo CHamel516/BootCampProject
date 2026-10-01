@@ -12,6 +12,11 @@ const commitmentSchema = new mongoose.Schema(
     dayOfWeek: { type: Number, required: true, min: 0, max: 6 },
     startTime: { type: String, required: true },
     endTime: { type: String, required: true },
+    seriesId: {
+      type: mongoose.Schema.Types.ObjectId,
+      default: null,
+      index: { sparse: true },
+    },
   },
   { timestamps: true }
 );
