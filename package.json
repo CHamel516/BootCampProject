@@ -1,0 +1,29 @@
+{
+  "name": "codebox-bootcamp-day2",
+  "version": "1.0.0",
+  "description": "Simple Todo API — Node.js + Express + MongoDB",
+  "main": "backend/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "concurrently -n backend,frontend -c cyan,magenta \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "nodemon backend/server.js",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "test": "node --test backend/**/*.test.js",
+    "seed": "node backend/scripts/seed.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^18.0.4",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.10.2"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5",
+    "nodemon": "^3.1.14"
+  }
+}
